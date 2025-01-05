@@ -435,13 +435,17 @@ SafetyTab:Toggle{
 	Callback = function(state)
 		local deathdebounce = true
 		while state do
-			if char.Humanoid.Health <= 0 and deathdebounce then
-				cmd:InvokeServer(";re")
-				deathdebounce = false
-				task.wait(0.1)
-				deathdebounce = true
-			end
-			task.wait()
+		    if char.Humanoid.Health <= 0 and deathdebounce then
+		        cmd:InvokeServer(";re")
+		        deathdebounce = false
+		        
+		        repeat
+		            task.wait(0.1)
+		        until char.Humanoid.Health > 0
+				
+		        deathdebounce = true
+		    end
+		    task.wait()
 		end
 	end
 }
