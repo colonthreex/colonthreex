@@ -436,19 +436,18 @@ SafetyTab:Toggle{
 		local deathdebounce = true
 		while state do
 		    -- Check if the player has died and the debounce is active
-		    if char.Humanoid.Health <= 0 and deathdebounce then
+		    if player.Character.Humanoid.Health <= 0 and deathdebounce then
 		        cmd:InvokeServer(";re") -- Run the command
 		        deathdebounce = false -- Temporarily disable the debounce
 		
 		        -- Wait for the character to respawn (when Health becomes > 0)
 		        repeat
 		            task.wait(0.1)
-		        until char.Humanoid.Health > 0
+		        until player.Character.Humanoid.Health > 0
 		
 		        -- Ensure there's a cooldown to prevent immediate re-trigger
 		        task.wait(0.5)
 		        deathdebounce = true
-			char = player.Character
 		    end
 		    task.wait()
 		end
