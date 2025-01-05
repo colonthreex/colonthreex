@@ -6,9 +6,9 @@ local boykisserid = "124224104795806"
 local player = game.Players.LocalPlayer
 local char = player.Character
 
-local cmd
-if ReplicatedStorage:FindFirstChild("HDAdminClient") then
-  cmd = ReplicatedStorage:HDAdminClient.Signals.RequestCommand
+local cmd = nil
+if game.ReplicatedStorage:FindFirstChild("HDAdminClient") then
+  cmd = game.ReplicatedStorage.HDAdminClient.Signals.RequestCommand
 else
   return
 end
@@ -417,9 +417,9 @@ end
 ------------------------------------------------------------------------------------------
 
 local GUI = lib:Create{
-    Name = "Mercury",
+    Name = ":3x",
     Size = UDim2.fromOffset(600, 400),
-    Theme = Mercury.Themes.Legacy,
+    Theme = lib.Themes.Legacy,
     Link = "https://github.com/colonthreex/colonthreex"
 }
 
@@ -434,8 +434,8 @@ SafetyTab:Toggle{
 	Description = "Runs ';re' on critical health to prevent death",
 	Callback = function(state)
 		local deathdebounce = true
-		while state and deathdebounce do
-			if char.Humanoid.Health <= 0 then
+		while state do
+			if char.Humanoid.Health <= 0 and deathdebounce then
 				cmd:InvokeServer(";re")
 				deathdebounce = false
 				task.wait(0.1)
