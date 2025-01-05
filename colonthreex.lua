@@ -1,3 +1,6 @@
+repeat task.wait() until game:IsLoaded()
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/colonthreex/colonthreex/colonthreex/ui.lua"))()
+
 local boykisserid = "124224104795806"
 
 local player = game.Players.LocalPlayer
@@ -274,6 +277,33 @@ function FireParts()
       AddFire(v)
     end)
   end
+end
+
+function spam(id)
+	for i,v in game.workspace:GetDescendants() do
+		if v:IsA("BasePart") then
+			spawn(function()
+				SetLocked(v,false)
+				SpawnDecal(v,Enum.NormalId.Front)
+				AddDecal(v,id,Enum.NormalId.Front)
+
+				SpawnDecal(v,Enum.NormalId.Back)
+				AddDecal(v,id,Enum.NormalId.Back)
+
+				SpawnDecal(v,Enum.NormalId.Right)
+				AddDecal(v,id,Enum.NormalId.Right)
+
+				SpawnDecal(v,Enum.NormalId.Left)
+				AddDecal(v,id,Enum.NormalId.Left)
+
+				SpawnDecal(v,Enum.NormalId.Bottom)
+				AddDecal(v,id,Enum.NormalId.Bottom)
+
+				SpawnDecal(v,Enum.NormalId.Top)
+				AddDecal(v,id,Enum.NormalId.Top)
+			end)
+		end
+	end 
 end
 
 function Sky(id)
