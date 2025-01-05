@@ -190,6 +190,14 @@ function SetTrans(part,int)
   }
   _(args)
 end
+function InvisAll()
+  for i,v in game.Workspace:GetDescendants() do
+    spawn(function()
+      SetLocked(v,false)
+      SetTrans(v, 1)
+    end)
+  end
+end
 function CreateSpotlight(part)
   local args = {
     [1] = "CreateLights",
@@ -337,8 +345,6 @@ function Penis(player)
   if player.Character:FindFirstChild("Penis") then
     return
   else
-
-
     SetAnchor(true,player.Character.HumanoidRootPart)
     spawn(function()
       CreatePart(player.Character:WaitForChild("Right Leg").CFrame * CFrame.new(-0.8,1,-0.6),player.Character)
@@ -425,31 +431,175 @@ local GUI = lib:Create{
 
 local SafetyTab = GUI:Tab{
 	Name = "Safety",
-	Icon = "rbxassetid://7169354151"
+	Icon = "rbxassetid://82326903804355"
 }
 
 SafetyTab:Toggle{
-	Name = "Anti-Death",
+	Name = "Anti-Command",
 	StartingState = false,
-	Description = "Runs ';re' on critical health to prevent death",
+	Description = "Prevents certain commands from being run on you.",
 	Callback = function(state)
-		local deathdebounce = true
 		while state do
-		    -- Check if the player has died and the debounce is active
-		    if player.Character.Humanoid.Health <= 0 and deathdebounce then
-		        cmd:InvokeServer(";re") -- Run the command
-		        deathdebounce = false -- Temporarily disable the debounce
-		
-		        -- Wait for the character to respawn (when Health becomes > 0)
-		        repeat
-		            task.wait(0.1)
-		        until player.Character.Humanoid.Health > 0
-		
-		        -- Ensure there's a cooldown to prevent immediate re-trigger
-		        task.wait(0.5)
-		        deathdebounce = true
-		    end
-		    task.wait()
+			cmd:InvokeServer(";unjail me")
+			cmd:InvokeServer(";unice me")
+		    cmd:InvokeServer(";thaw me")
+		    cmd:InvokeServer(";uncmdbar2 others")
+		    cmd:InvokeServer(";unname me")
+		    cmd:InvokeServer(";showguis me")
+		    cmd:InvokeServer(";unwarp me")
+		    cmd:InvokeServer(";speed me 16")
+		    task.wait(1)
+    	end
+	end
+}
+
+local AdminTab = GUI:Tab{
+	Name = "Admin",
+	Icon = "rbxassetid://137413662960680"
+}
+
+AdminTab:Button{
+	Name = "Boykisser All",
+	Description = "Make everyone boykisser :3",
+	Callback = function()
+		cmd:InvokeServer(";char all 4308930094")
+	end
+}
+
+AdminTab:Toggle{
+	Name = "Loop-kill Others",
+	StartingState = false,
+	Description = "Fakes a loopkill on everyone else.",
+	Callback = function(state)
+		while state do
+			cmd:InvokeServer(";kill others")
+		    task.wait(1)
+    	end
+	end
+}
+
+AdminTab:Toggle{
+	Name = "Loop-re Others",
+	StartingState = false,
+	Description = "Spams re on everyone else.",
+	Callback = function(state)
+		while state do
+			cmd:InvokeServer(";re others")
+		    task.wait(0.1)
+    	end
+	end
+}
+
+AdminTab:Toggle{
+	Name = "Loop-fling Others",
+	StartingState = false,
+	Description = "Fakes a loopfling on everyone else.",
+	Callback = function(state)
+		while state do
+			cmd:InvokeServer(";fling others")
+		    task.wait(1)
+    	end
+	end
+}
+
+AdminTab:Toggle{
+	Name = "Blind All",
+	StartingState = false,
+	Description = "Runs commands so everyone else cannot see.",
+	Callback = function(state)
+		while state do
+			cmd:InvokeServer(";re others")
+			cmd:InvokeServer(";sm")
+			cmd:InvokeServer(";blur others inf")
+			task.wait(0.1)
+    	end
+
+		if state == false then
+			task.wait(0.2)
+			cmd:InvokeServer(";unblur others")
 		end
+	end
+}
+
+AdminTab:Toggle{
+	Name = "Crash Others",
+	StartingState = false,
+	Description = "Attempts to crash everyone else's client.",
+	Callback = function(state)
+		while state do
+			cmd:InvokeServer(";loadmap")
+			cmd:InvokeServer(";speed others inf")
+	        cmd:InvokeServer(";logs others")
+	        cmd:InvokeServer(";clogs others")
+	        cmd:InvokeServer(";fly others inf")
+	        cmd:InvokeServer(";fly2 others inf")
+	        cmd:InvokeServer(";noclip others inf")
+	        cmd:InvokeServer(";noclip2 others inf")
+	        cmd:InvokeServer(";lasereyes others")
+	        cmd:InvokeServer(";poop others")
+	        cmd:InvokeServer(";clone others")
+	        cmd:InvokeServer(";hideguis others")
+	        cmd:InvokeServer(";blur others inf")
+	        cmd:InvokeServer(";uncmdbar2 others")
+			cmd:InvokeServer(";savemap")
+		    task.wait(0.1)
+    	end
+	end
+}
+
+local BTab = GUI:Tab{
+	Name = "F3X",
+	Icon = "rbxassetid://90888015913456"
+}
+
+BTab:Button{
+	Name = "Boykisser Apocalypse",
+	Description = "Runs every boykisser command. Use HD Admin, nya!~ :3",
+	Callback = function()
+		spam(boykisserid)
+		Sky(boykisserid)
+		cmd:InvokeServer(";char all 4308930094")
+		cmd:InvokeServer(";disco")
+	end
+}
+
+BTab:Button{
+	Name = "Boykisser Skybox",
+	Description = "Make a fake skybox with boykisser :3",
+	Callback = function()
+		Sky(boykisserid)
+	end
+}
+
+BTab:Button{
+	Name = "Boykisser Spam",
+	Description = "Puts boykisser decals on everything :3",
+	Callback = function()
+		spam(boykisserid)
+	end
+}
+
+BTab:Button{
+	Name = "Fire Spam",
+	Description = "Sets everything on fire.",
+	Callback = function()
+		FireParts()
+	end
+}
+
+BTab:Button{
+	Name = "Invisible All",
+	Description = "Makes everything invisible.",
+	Callback = function()
+		InvisAll()
+	end
+}
+
+
+BTab:Button{
+	Name = "Cоck",
+	Description = "Makes you hung ;3",
+	Callback = function()
+		Penis(player)
 	end
 }
