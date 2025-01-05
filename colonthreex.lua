@@ -438,12 +438,14 @@ SafetyTab:Toggle{
 		    if char.Humanoid.Health <= 0 and deathdebounce then
 		        cmd:InvokeServer(";re")
 		        deathdebounce = false
-		        
+		
 		        repeat
 		            task.wait(0.1)
-		        until char.Humanoid.Health > 0
-				
-		        deathdebounce = true
+		        until char.Humanoid.Health > 0 or not state
+		        
+		        if state then
+		            deathdebounce = true
+		        end
 		    end
 		    task.wait()
 		end
