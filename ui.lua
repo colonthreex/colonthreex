@@ -19,6 +19,7 @@
 
 googus-ui, very slightly modded
 https://github.com/Abovescore/Googus
+
 ]]
 
 local TweenService = game:GetService("TweenService")
@@ -689,7 +690,7 @@ function Library:create(options)
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 5, 0.5, 0),
 		Size = UDim2.new(0, 15, 0, 15),
-		Image = "http://www.roblox.com/asset/?id=91171486133065",
+		Image = "http://www.roblox.com/asset/?id=107710990238980",
 		Theme = {ImageColor3 = "StrongText"}
 	})
 
