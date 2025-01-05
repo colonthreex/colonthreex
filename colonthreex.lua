@@ -448,6 +448,7 @@ SafetyTab:Toggle{
 		        -- Ensure there's a cooldown to prevent immediate re-trigger
 		        task.wait(0.5)
 		        deathdebounce = true
+			char = player.Character
 		    end
 		    task.wait()
 		end
