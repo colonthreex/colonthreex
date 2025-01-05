@@ -11,6 +11,8 @@ else
   return
 end
 
+cmd:InvokeServer(";btools")
+
 local tool
 
 for i,v in player:GetDescendants() do
@@ -20,7 +22,7 @@ for i,v in player:GetDescendants() do
 end
 for i,v in game.ReplicatedStorage:GetDescendants() do
   if v.Name == "SyncAPI" then
-    tool = v.Parent
+	tool = v.Parent
   end
 end
 
