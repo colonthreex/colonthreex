@@ -1,5 +1,5 @@
 repeat task.wait() until game:IsLoaded()
-local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/colonthreex/colonthreex/colonthreex/ui.lua"))()
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/colonthreex/colonthreex/colonthreex/ui.lua"))()
 
 local boykisserid = "124224104795806"
 
@@ -25,7 +25,7 @@ for i,v in game.ReplicatedStorage:GetDescendants() do
     tool = v.Parent
   end
 end
---craaa
+
 remote = tool.SyncAPI.ServerEndpoint
 function _(args)
   remote:InvokeServer(unpack(args))
@@ -413,3 +413,35 @@ function Penis(player)
     until char.Head1.Anchored == false
   end
 end
+
+------------------------------------------------------------------------------------------
+
+local GUI = lib:Create{
+    Name = "Mercury",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Legacy,
+    Link = "https://github.com/colonthreex/colonthreex"
+}
+
+local SafetyTab = GUI:Tab{
+	Name = "Safety",
+	Icon = "rbxassetid://7169354151"
+}
+
+SafetyTab:Toggle{
+	Name = "Anti-Death",
+	StartingState = false,
+	Description = "Runs ';re' on critical health to prevent death",
+	Callback = function(state)
+		local deathdebounce = true
+		while state and deathdebounce do
+			if char.Humanoid.Health <= 0 then
+				cmd:InvokeServer(";re")
+				deathdebounce = false
+				task.wait(0.1)
+				deathdebounce = true
+			end
+			task.wait()
+		end
+	end
+}
