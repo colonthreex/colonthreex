@@ -11,8 +11,6 @@ else
   return
 end
 
-cmd:InvokeServer(";btools")
-
 local tool
 
 for i,v in player:GetDescendants() do
