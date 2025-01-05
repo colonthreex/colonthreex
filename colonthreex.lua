@@ -554,7 +554,7 @@ local BTab = GUI:Tab{
 
 BTab:Button{
 	Name = "Boykisser Apocalypse",
-	Description = "Runs every boykisser command. Use HD Admin, nya!~ :3",
+	Description = "Runs every boykisser command possible! :3",
 	Callback = function()
 		spam("110168278917689")
 		Sky("110168278917689")
