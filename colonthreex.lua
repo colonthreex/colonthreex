@@ -556,8 +556,8 @@ BTab:Button{
 	Name = "Boykisser Apocalypse",
 	Description = "Runs every boykisser command. Use HD Admin, nya!~ :3",
 	Callback = function()
-		spam("86460906740203")
-		Sky("86460906740203")
+		spam("135242336960815")
+		Sky("135242336960815")
 		cmd:InvokeServer(";char all 4308930094")
 		cmd:InvokeServer(";disco")
 	end
@@ -567,7 +567,7 @@ BTab:Button{
 	Name = "Boykisser Skybox",
 	Description = "Make a fake skybox with boykisser :3",
 	Callback = function()
-		Sky("86460906740203")
+		Sky("135242336960815")
 	end
 }
 
@@ -575,7 +575,7 @@ BTab:Button{
 	Name = "Boykisser Spam",
 	Description = "Puts boykisser decals on everything :3",
 	Callback = function()
-		spam("86460906740203")
+		spam("135242336960815")
 	end
 }
 
