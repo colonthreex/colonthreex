@@ -1,7 +1,7 @@
 repeat task.wait() until game:IsLoaded()
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/colonthreex/colonthreex/colonthreex/ui.lua"))()
 
-local boykisserid = "18862249151"
+local boykisserid = 18862249151
 
 local player = game.Players.LocalPlayer
 local char = player.Character
